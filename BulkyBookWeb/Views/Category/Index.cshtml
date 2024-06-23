@@ -2,6 +2,12 @@
 @{
     ViewData["Title"]="Catgory";
 }
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        @TempData["success"]
+    </div>
+}
 
 
 <div class="container">
