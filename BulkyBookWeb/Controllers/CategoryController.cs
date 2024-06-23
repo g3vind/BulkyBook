@@ -16,5 +16,16 @@ namespace BulkyBookWeb.Controllers
             List<CategoryModel> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(CategoryModel obj) 
+        {
+            _db.Categories.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Category");
+        }
     }
 }

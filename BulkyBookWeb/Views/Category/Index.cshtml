@@ -3,24 +3,40 @@
     ViewData["Title"]="Catgory";
 }
 
-<h1>Category Page</h1>
+
+<div class="container">
+    <div class="row pt-4 pb-2">
+       <div class="col-6">
+           <h2 class="text-primary">Category List</h2>
+       </div>
+       <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle-fill"></i>
+                Create New Category
+            </a>
+       </div>
+    </div>
+</div>
+
 
 <table class="table table-bordered table-striped">
-   <thead class="thead-dark">
+    <thead class="thead-dark">
         <tr class="text-center">
-             <th>Display Order</th>
-             <th>Category Name</th>
-             <th>Created At</th>
+            <th>Id</th>
+            <th>Display Order</th>
+            <th>Category Name</th>
+            <th>Created At</th>
         </tr>
-   </thead>
-   <tbody>
-       @foreach(var obj in Model)
-       {
-           <tr class="text-center"> 
-              <td>@obj.DisplayOrder</td>
-              <td>@obj.Name</td>
-              <td>@obj.CreatedAt</td>
-           </tr>
-       }
-   </tbody>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+        {
+            <tr class="text-center">
+                <td>@obj.Id</td>
+                <td>@obj.DisplayOrder</td>
+                <td>@obj.Name</td>
+                <td>@obj.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
 </table>
