@@ -36,5 +36,33 @@ namespace BulkyBookWeb.Controllers
             
             
         }
+
+        // GETTING THE CATEGORY
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            CategoryModel? categoryFromDb = _db.Categories.FirstOrDefault(u=>u.Id==id);
+            if(categoryFromDb==null)
+            {
+                return NotFound();  
+            }
+            return View(categoryFromDb);  
+        }
+        // UPDATING THE CATEGORY
+        [HttpPost]
+        public IActionResult Edit(CategoryModel obj)
+        {
+            if(ModelState.IsValid)
+            {
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Category");
+            }
+            return View();
+        }
     }
 }
