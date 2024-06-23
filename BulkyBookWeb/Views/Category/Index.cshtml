@@ -1,0 +1,26 @@
+﻿@model List<CategoryModel>
+@{
+    ViewData["Title"]="Catgory";
+}
+
+<h1>Category Page</h1>
+
+<table class="table table-bordered table-striped">
+   <thead class="thead-dark">
+        <tr class="text-center">
+             <th>Display Order</th>
+             <th>Category Name</th>
+             <th>Created At</th>
+        </tr>
+   </thead>
+   <tbody>
+       @foreach(var obj in Model)
+       {
+           <tr class="text-center"> 
+              <td>@obj.DisplayOrder</td>
+              <td>@obj.Name</td>
+              <td>@obj.CreatedAt</td>
+           </tr>
+       }
+   </tbody>
+</table>
