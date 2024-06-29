@@ -1,4 +1,5 @@
 ﻿@model List<CategoryModel>
+
 @{
     ViewData["Title"]="Catgory";
 }
@@ -8,7 +9,12 @@
         @TempData["success"]
     </div>
 }
-
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        @TempData["success"]
+    </div>
+}
 
 <div class="container">
     <div class="row pt-4 pb-2">
